@@ -1,0 +1,10 @@
+﻿  <system.serviceModel>
+    <extensions>
+      <bindingElementExtensions>
+        <add name="loopbackAdapter" type="LoopbackAdapter.LoopbackAdapterBindingElementExtension, LoopbackAdapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a702dd707b910e02" />
+      </bindingElementExtensions>
+      <bindingExtensions>
+        <add name="loopbackAdapterBinding" type="LoopbackAdapter.LoopbackAdapterBindingCollectionElement,LoopbackAdapter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a702dd707b910e02" />
+      </bindingExtensions>
+    </extensions>
+  </system.serviceModel>
