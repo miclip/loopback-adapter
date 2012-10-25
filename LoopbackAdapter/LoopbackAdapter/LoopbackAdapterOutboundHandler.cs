@@ -39,9 +39,13 @@ namespace LoopbackAdapter
 
         private Message CreateResponseMessage(Message requestMessage)
         {
-           string propertiesToPromoteKey = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties/WriteToContext";
-
-            XmlReader reader = requestMessage.GetReaderAtBodyContents();
+           
+            string propertiesToPromoteKey = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties/WriteToContext";
+            
+            var settings = new XmlReaderSettings {IgnoreWhitespace = false, CheckCharacters = false};
+            var reader = XmlReader.Create(
+                   requestMessage.GetReaderAtBodyContents().ReadSubtree(), settings);
+            
             Message message = Message.CreateMessage(MessageVersion.Default, requestMessage.Headers.Action, reader);
             List<KeyValuePair<XmlQualifiedName, object>> propertiesToPromote = new List<KeyValuePair<XmlQualifiedName, object>>();
 
